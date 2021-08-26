@@ -32,6 +32,8 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, disabled, error }) => css`
+    border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
+
     ${disabled && wrapperModifiers.disabled(theme)};
     ${error && wrapperModifiers.error(theme)};
   `}
@@ -44,9 +46,10 @@ export const InputWrapper = styled.div`
     border-radius: 0.2rem;
     padding: 0 ${theme.spacings.xsmall};
     border: 0.2rem ${theme.colors.lightGray} solid;
+    border-radius: inherit;
 
     &:focus-within {
-      box-shadow: 0 0 0.5rem ${theme.colors.blue};
+      border-color: ${theme.colors.black};
     }
   `}
 `
