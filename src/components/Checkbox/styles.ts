@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `
 
 export const Input = styled.input`
-  ${({ theme }) => css`
+  ${() => css`
     cursor: pointer;
     display: flex;
     align-items: center;
