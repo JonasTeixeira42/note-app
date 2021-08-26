@@ -22,7 +22,7 @@ export default {
   },
   colors: {
     white: '#FFFFFF',
-    darkGray: '#282E29',
+    darkGray: '#666666',
     gray: '#9E9E9E',
     black: '#000000',
     purple: '#5C6BC0',
