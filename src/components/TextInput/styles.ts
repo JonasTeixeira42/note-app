@@ -2,7 +2,10 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 import { TextInputProps } from '.'
 
-type WrapperProps = { error?: boolean } & Pick<TextInputProps, 'disabled'>
+type WrapperProps = { error?: boolean } & Pick<
+  TextInputProps,
+  'disabled' | 'isInputSearch'
+>
 
 type InputProps = { hasIcon: boolean }
 
@@ -27,15 +30,31 @@ const wrapperModifiers = {
     ${Icon} {
       color: ${theme.colors.red};
     }
+  `,
+
+  search: (theme: DefaultTheme) => css`
+    ${InputWrapper} {
+      background-color: ${theme.colors.white};
+      border-color: ${theme.colors.white};
+    }
+
+    ${Input} {
+      color: ${theme.colors.gray};
+    }
+
+    ${Icon} {
+      color: ${theme.colors.darkGray};
+    }
   `
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, disabled, error }) => css`
+  ${({ theme, disabled, error, isInputSearch }) => css`
     border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
 
     ${disabled && wrapperModifiers.disabled(theme)};
     ${error && wrapperModifiers.error(theme)};
+    ${isInputSearch && wrapperModifiers.search(theme)}
   `}
 `
 
@@ -65,7 +84,7 @@ export const Input = styled.input<InputProps>`
     outline: none;
     width: 100%;
 
-    ${hasIcon && `padding-left: ${theme.spacings.xxsmall}`}
+    ${hasIcon && `padding-left: ${theme.spacings.xsmall}`}
   `}
 `
 

@@ -14,7 +14,8 @@ export default {
     initialValue: '',
     iconPosition: 'left',
     placeholder: 'jonaslagoteixeira@gmail.com',
-    disabled: false
+    disabled: false,
+    isInputSearch: false
   },
   argTypes: {
     onInputChange: { action: 'changed' },

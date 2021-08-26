@@ -8,6 +8,7 @@ export type TextInputProps = {
   icon?: React.ReactNode
   disabled?: boolean
   error?: string
+  isInputSearch?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
 const TextInput = ({
@@ -16,6 +17,7 @@ const TextInput = ({
   error = '',
   disabled = false,
   value,
+  isInputSearch = false,
   ...props
 }: TextInputProps) => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +28,11 @@ const TextInput = ({
 
   return (
     <>
-      <S.Wrapper disabled={disabled} error={!!error}>
+      <S.Wrapper
+        disabled={disabled}
+        error={!!error}
+        isInputSearch={isInputSearch}
+      >
         <S.InputWrapper>
           {!!icon && <S.Icon>{icon}</S.Icon>}
           <S.Input

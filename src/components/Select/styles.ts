@@ -10,7 +10,7 @@ export const Wrapper = styled.div<WrapperProps>`
     border: 0.2rem ${theme.colors.lightGray} solid;
     border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
 
-    ${error && 'border-color: #f94546'};
+    ${error && `border-color: ${theme.colors.red}`};
 
     &:before {
       content: '';
@@ -41,6 +41,6 @@ export const Select = styled.select`
 export const Error = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
-    color: #f94546;
+    color: ${theme.colors.red};
   `}
 `
