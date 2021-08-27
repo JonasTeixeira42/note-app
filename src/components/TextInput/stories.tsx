@@ -1,5 +1,5 @@
 import React from 'react'
-import { Email } from '@styled-icons/material-outlined'
+import { Email, Search } from '@styled-icons/material-outlined'
 import { Meta, Story } from '@storybook/react/types-6-0'
 
 import TextInput, { TextInputProps } from '.'
@@ -50,4 +50,16 @@ export const WithError: Story<TextInputProps> = (args) => (
 WithError.args = {
   error: 'E-mail not valid',
   icon: <Email />
+}
+
+export const SearchInput: Story<TextInputProps> = (args) => (
+  <div style={{ maxWidth: '30rem' }}>
+    <TextInput {...args} />
+  </div>
+)
+
+SearchInput.args = {
+  icon: <Search />,
+  isInputSearch: true,
+  placeholder: 'Search notes...'
 }

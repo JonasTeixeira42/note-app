@@ -36,6 +36,7 @@ const wrapperModifiers = {
     ${InputWrapper} {
       background-color: ${theme.colors.white};
       border-color: ${theme.colors.white};
+      box-shadow: 0 0.3rem 0.6rem #00000029;
     }
 
     ${Input} {
