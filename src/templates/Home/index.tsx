@@ -3,14 +3,17 @@ import { Add, Search } from '@styled-icons/material-outlined'
 
 import Modal from 'components/Modal'
 import Button from 'components/Button'
+import NoteCard from 'components/NoteCard'
 import FormNote from 'components/FormNote'
 import TextInput from 'components/TextInput'
 
+import notes from './mock'
 import * as S from './styles'
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
   const [values, setValues] = useState({ search: '' })
+
   const form = useRef<HTMLButtonElement>(null)
 
   const toggleModal = () => setShowModal(!showModal)
@@ -46,11 +49,29 @@ const Home = () => {
           />
           <S.Actions>
             <div></div>
-            <Button color="white" background="blue" icon={<Add />} hasShadow>
+            <Button
+              onClick={toggleModal}
+              color="white"
+              background="blue"
+              icon={<Add />}
+              hasShadow
+            >
               add note
             </Button>
           </S.Actions>
         </S.SearchWrapper>
+        <S.Notes>
+          {notes.map((note, key) => (
+            <NoteCard
+              key={key}
+              type={note.type}
+              date={note.date}
+              title={note.title}
+              isFinished={note.isFinished}
+              description={note.description}
+            />
+          ))}
+        </S.Notes>
       </S.Wrapper>
     </S.Container>
   )
