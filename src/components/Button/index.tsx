@@ -9,18 +9,21 @@ export type ButtonProps = {
   color?: ButtonColors
   background?: ButtonColors
   icon?: JSX.Element
+  hasShadow?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({
   children,
   icon,
   color = 'white',
+  hasShadow = false,
   background = 'blue',
   ...props
 }: ButtonProps) => {
   return (
     <S.Wrapper
       hasIcon={!!icon}
+      hasShadow={hasShadow}
       color={color}
       background={background}
       {...props}

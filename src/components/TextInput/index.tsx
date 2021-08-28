@@ -4,7 +4,7 @@ import * as S from './styles'
 
 export type TextInputProps = {
   onInputChange: (value: string) => void
-  value: string
+  value?: string
   icon?: React.ReactNode
   disabled?: boolean
   error?: string
@@ -16,7 +16,7 @@ const TextInput = ({
   icon,
   error = '',
   disabled = false,
-  value,
+  value = '',
   isInputSearch = false,
   ...props
 }: TextInputProps) => {

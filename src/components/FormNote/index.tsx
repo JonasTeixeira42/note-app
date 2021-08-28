@@ -45,7 +45,7 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
         <S.Form onSubmit={handleSubmit}>
           <TextInput
             name="title"
-            placeholder="title"
+            placeholder="Add tittle..."
             error={formErrors?.title}
             type="text"
             value={values.title}

@@ -5,7 +5,7 @@ import { ButtonColors, ButtonProps } from '.'
 
 type WrapperProps = { hasIcon: boolean } & Pick<
   ButtonProps,
-  'color' | 'background'
+  'color' | 'background' | 'hasShadow'
 >
 
 const wrapperModifiers = {
@@ -33,7 +33,7 @@ const wrapperModifiers = {
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, color, background, hasIcon }) => css`
+  ${({ theme, color, background, hasIcon, hasShadow }) => css`
     border: 0;
     outline: none;
     font-size: ${theme.font.sizes.xsmall};
@@ -47,6 +47,7 @@ export const Wrapper = styled.button<WrapperProps>`
     transition: background 0.3s;
 
     ${hasIcon && wrapperModifiers.hasIcon()}
+    ${hasShadow && 'box-shadow: 0px 3px 6px #00000029'};
     ${!!background && wrapperModifiers.background(background, theme)};
   `}
 `
