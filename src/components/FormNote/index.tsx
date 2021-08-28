@@ -72,8 +72,6 @@ const FormNote = ({
           value={values.description}
           error={formErrors?.description}
         />
-
-        <S.Button type="submit">Cadastrar</S.Button>
       </S.Form>
     </S.Wrapper>
   )

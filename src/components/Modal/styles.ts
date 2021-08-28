@@ -57,7 +57,8 @@ export const Body = styled.div`
 export const Content = styled.div``
 
 export const Footer = styled.div`
-  ${() => css`
+  ${({ theme }) => css`
     text-align: right;
+    margin-top: ${theme.spacings.xsmall};
   `}
 `

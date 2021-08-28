@@ -10,6 +10,10 @@ export const Form = styled.form`
     display: grid;
     gap: ${theme.spacings.xsmall};
 
+    ${TextareaStyles.Wrapper} {
+      height: 10rem;
+    }
+
     ${media.greaterThan('medium')`
       grid-template-columns: 1fr 0.6fr;
       column-gap: ${theme.spacings.xsmall};
@@ -19,19 +23,5 @@ export const Form = styled.form`
         height: 22rem;
       }
     `}
-  `}
-`
-
-export const Button = styled.button`
-  ${({ theme }) => css`
-    background-color: #7d40e7;
-    padding: 1.5rem 0;
-    outline: 0;
-    border: 0;
-    border-radius: 0.4rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: #fafafa;
-    margin: ${theme.spacings.medium} auto ${theme.spacings.xsmall};
   `}
 `
