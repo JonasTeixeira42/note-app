@@ -27,7 +27,7 @@ const TextInput = ({
   }
 
   return (
-    <>
+    <div>
       <S.Wrapper
         disabled={disabled}
         error={!!error}
@@ -46,7 +46,7 @@ const TextInput = ({
         </S.InputWrapper>
       </S.Wrapper>
       {!!error && <S.Error>{error}</S.Error>}
-    </>
+    </div>
   )
 }
 

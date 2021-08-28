@@ -32,6 +32,7 @@ export const Select = styled.select`
     background: ${theme.colors.lightGray};
     padding: calc(${theme.spacings.small} / 2) ${theme.spacings.xsmall};
     width: 100%;
+    height: 100%;
     border: none;
     font-size: 1.6rem;
     appearance: none;

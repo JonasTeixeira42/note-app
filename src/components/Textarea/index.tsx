@@ -21,12 +21,12 @@ const Textarea = ({
   }
 
   return (
-    <>
+    <div>
       <S.Wrapper error={!!error}>
         <S.Textarea onChange={onChange} value={value} {...props}></S.Textarea>
       </S.Wrapper>
       {!!error && <S.Error>{error}</S.Error>}
-    </>
+    </div>
   )
 }
 

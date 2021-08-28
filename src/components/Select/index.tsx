@@ -30,7 +30,7 @@ const Select = ({
   }
 
   return (
-    <>
+    <div>
       <S.Wrapper error={!!error}>
         <S.Select onChange={onChange} value={value} {...props}>
           {!!placeholder && (
@@ -46,7 +46,7 @@ const Select = ({
         </S.Select>
       </S.Wrapper>
       {!!error && <S.Error>{error}</S.Error>}
-    </>
+    </div>
   )
 }
 

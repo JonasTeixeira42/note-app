@@ -22,6 +22,7 @@ export const Textarea = styled.textarea`
     border: 0;
     outline: none;
     width: 100%;
+    height: 100%;
   `}
 `
 
