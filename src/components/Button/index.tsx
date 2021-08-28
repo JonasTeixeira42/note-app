@@ -9,13 +9,12 @@ export type ButtonProps = {
   color?: ButtonColors
   background?: ButtonColors
   icon?: JSX.Element
-  onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({
   children,
   icon,
-  color = 'blue',
+  color = 'white',
   background = 'blue',
   ...props
 }: ButtonProps) => {
