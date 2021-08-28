@@ -14,6 +14,10 @@ export const Form = styled.form`
       height: 10rem;
     }
 
+    > button {
+      display: none;
+    }
+
     ${media.greaterThan('medium')`
       grid-template-columns: 1fr 0.6fr;
       column-gap: ${theme.spacings.xsmall};
