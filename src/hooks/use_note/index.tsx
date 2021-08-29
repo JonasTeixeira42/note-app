@@ -62,16 +62,22 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
     const newNotes = noteCards
     const noteIndex = newNotes.findIndex((note) => note.id === id)
 
-    if (noteIndex < 0) {
-      return null
-    }
-    newNotes[noteIndex].isFinished = status
+    if (noteIndex >= 0) {
+      newNotes[noteIndex].isFinished = status
 
-    saveNote(newNotes)
+      saveNote(newNotes)
+    }
   }
 
   const updateNote = (note: NoteCardProps) => {
-    console.log('UPDATE', note)
+    const newNotes = noteCards
+    const noteIndex = newNotes.findIndex((item) => item.id === note.id)
+
+    if (noteIndex >= 0) {
+      newNotes[noteIndex] = { ...newNotes[noteIndex], ...note }
+
+      saveNote(newNotes)
+    }
   }
 
   return (

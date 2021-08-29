@@ -2,6 +2,7 @@ import React from 'react'
 import { Edit, Delete } from '@styled-icons/material/'
 
 import Checkbox from 'components/Checkbox'
+import { FormNoteProps } from 'components/FormNote'
 
 import * as S from './styles'
 import { useNote } from 'hooks/use_note'
@@ -15,6 +16,7 @@ export type NoteCardProps = {
   date?: string
   isFinished?: boolean
   type?: NoteTypes
+  onUpdate?: (note: FormNoteProps) => void
 }
 
 const NoteCard = ({
@@ -23,12 +25,18 @@ const NoteCard = ({
   description = '',
   date = '',
   isFinished = false,
-  type = 'home'
+  type = 'home',
+  onUpdate
 }: NoteCardProps) => {
   const { changeStatus } = useNote()
 
   const onCheck = (isChecked: boolean) => {
     changeStatus(id, isChecked)
+  }
+
+  const onClick = () => {
+    !!onUpdate &&
+      onUpdate({ id, title, description, category: type as NoteTypes })
   }
 
   return (
@@ -37,7 +45,7 @@ const NoteCard = ({
         <Checkbox isChecked={isFinished} onCheck={(v) => onCheck(v)} />
         <S.Title>{title}</S.Title>
         <S.ActionGroup>
-          <S.IconWrapper>
+          <S.IconWrapper onClick={onClick}>
             <Edit aria-label="edit note" />
           </S.IconWrapper>
           <S.IconWrapper>

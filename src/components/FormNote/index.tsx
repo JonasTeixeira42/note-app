@@ -27,7 +27,7 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
       description: description
     })
 
-    const { addNote } = useNote()
+    const { addNote, updateNote } = useNote()
 
     const handleInput = (field: string, value: string) => {
       setValues((v) => ({ ...v, [field]: value }))
@@ -36,10 +36,10 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
     const handleSubmit = (event: React.FormEvent) => {
       event.preventDefault()
 
-      const erros = noteValidade(values)
+      const errors = noteValidade(values)
 
-      if (Object.keys(erros).length) {
-        setFormErrors(erros)
+      if (Object.keys(errors).length) {
+        setFormErrors(errors)
         return
       }
 
@@ -50,7 +50,7 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
         description: values.description
       }
 
-      addNote(newNote)
+      id ? updateNote(newNote) : addNote(newNote)
 
       setFormErrors({})
       setValues({
