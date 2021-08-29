@@ -6,6 +6,8 @@ import Empty from 'components/Empty'
 import Button from 'components/Button'
 import NoteCard from 'components/NoteCard'
 import TextInput from 'components/TextInput'
+import ProgressBar from 'components/ProgressBar'
+
 import FormNote, { FormNoteProps } from 'components/FormNote'
 
 import { useNote } from 'hooks/use_note'
@@ -18,7 +20,7 @@ const Home = () => {
   const [currentNote, setCurrentNote] = useState<FormNoteProps>(initialValue)
   const [values, setValues] = useState({ search: '' })
 
-  const { notes, completed, quantity } = useNote()
+  const { notes } = useNote()
 
   const form = useRef<HTMLButtonElement>(null)
 
@@ -33,7 +35,6 @@ const Home = () => {
   }
 
   const onSubmit = () => {
-    console.log('QUANTI', quantity, 'completed', completed)
     if (form.current) {
       form.current.click()
     }
@@ -76,6 +77,8 @@ const Home = () => {
             </Button>
           </S.Actions>
         </S.SearchWrapper>
+
+        <ProgressBar />
 
         <S.Notes>
           {notes.length ? (

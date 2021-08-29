@@ -1,10 +1,16 @@
 import styled, { css } from 'styled-components'
 
+import * as ProgressBarStyles from 'components/ProgressBar/styles'
+
 export const Container = styled.main`
   ${({ theme }) => css`
     max-width: ${theme.grid.container};
     margin: 0 auto;
     padding: 0 2rem;
+
+    ${ProgressBarStyles.Wrapper} {
+      margin-bottom: ${theme.spacings.small};
+    }
   `}
 `
 
