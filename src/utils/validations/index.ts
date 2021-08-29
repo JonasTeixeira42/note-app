@@ -1,7 +1,7 @@
 import Joi from 'joi'
 
 const fieldValidations = {
-  title: Joi.string().min(3).required(),
+  title: Joi.string().min(3).max(20).required(),
   category: Joi.string().required(),
   description: Joi.string().min(3).max(300).required()
 }

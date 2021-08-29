@@ -18,7 +18,7 @@ const Home = () => {
   const [currentNote, setCurrentNote] = useState<FormNoteProps>(initialValue)
   const [values, setValues] = useState({ search: '' })
 
-  const { notes } = useNote()
+  const { notes, completed, quantity } = useNote()
 
   const form = useRef<HTMLButtonElement>(null)
 
@@ -33,6 +33,7 @@ const Home = () => {
   }
 
   const onSubmit = () => {
+    console.log('QUANTI', quantity, 'completed', completed)
     if (form.current) {
       form.current.click()
     }

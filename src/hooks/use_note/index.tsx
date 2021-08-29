@@ -9,6 +9,8 @@ const NOTE_KEY = 'noteCards'
 
 export type NoteContextData = {
   notes: NoteCardProps[]
+  quantity: number
+  completed: number
   addNote: (note: NoteCardProps) => void
   updateNote: (note: NoteCardProps) => void
   changeStatus: (id: string, status: boolean) => void
@@ -17,6 +19,8 @@ export type NoteContextData = {
 
 export const NoteContextDefaultValues = {
   notes: [],
+  quantity: 0,
+  completed: 0,
   addNote: () => null,
   updateNote: () => null,
   changeStatus: () => null,
@@ -50,7 +54,7 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
   const addNote = (note: NoteCardProps) => {
     note.date = formatDate(new Date())
     note.isFinished = false
-    saveNote([...noteCards, note])
+    saveNote([note, ...noteCards])
   }
 
   const removeNote = (id: string) => {
@@ -69,12 +73,18 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
     }
   }
 
+  const completed = noteCards.filter((note) => note.isFinished === true).length
+
   const updateNote = (note: NoteCardProps) => {
     const newNotes = noteCards
     const noteIndex = newNotes.findIndex((item) => item.id === note.id)
 
     if (noteIndex >= 0) {
-      newNotes[noteIndex] = { ...newNotes[noteIndex], ...note }
+      newNotes[noteIndex] = {
+        ...newNotes[noteIndex],
+        ...note,
+        date: formatDate(new Date())
+      }
 
       saveNote(newNotes)
     }
@@ -84,6 +94,8 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
     <NoteContext.Provider
       value={{
         notes: noteCards,
+        quantity: noteCards.length,
+        completed,
         addNote,
         removeNote,
         updateNote,

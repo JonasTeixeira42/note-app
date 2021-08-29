@@ -28,7 +28,7 @@ const NoteCard = ({
   type = 'home',
   onUpdate
 }: NoteCardProps) => {
-  const { changeStatus } = useNote()
+  const { changeStatus, removeNote } = useNote()
 
   const onCheck = (isChecked: boolean) => {
     changeStatus(id, isChecked)
@@ -37,6 +37,10 @@ const NoteCard = ({
   const onClick = () => {
     !!onUpdate &&
       onUpdate({ id, title, description, category: type as NoteTypes })
+  }
+
+  const onDelete = () => {
+    removeNote(id)
   }
 
   return (
@@ -48,7 +52,7 @@ const NoteCard = ({
           <S.IconWrapper onClick={onClick}>
             <Edit aria-label="edit note" />
           </S.IconWrapper>
-          <S.IconWrapper>
+          <S.IconWrapper onClick={onDelete}>
             <Delete aria-label="delete note" />
           </S.IconWrapper>
         </S.ActionGroup>
