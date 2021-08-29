@@ -13,24 +13,29 @@ import FormNote, { FormNoteProps } from 'components/FormNote'
 import { useNote } from 'hooks/use_note'
 import initialValue from './initalValue'
 import emptyNoteImage from 'assets/images/add-note-illustration.svg'
+import searchImage from 'assets/images/search-image.svg'
+
 import * as S from './styles'
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
   const [currentNote, setCurrentNote] = useState<FormNoteProps>(initialValue)
   const [values, setValues] = useState({ search: '' })
+  const [title, setTitle] = useState('Add note')
 
-  const { notes } = useNote()
+  const { notes, filterByTitle } = useNote()
 
   const form = useRef<HTMLButtonElement>(null)
 
   const toggleModal = () => {
     setCurrentNote(initialValue)
+    setTitle('Add note')
     setShowModal(!showModal)
   }
 
   const onUpdate = (note: FormNoteProps) => {
     setCurrentNote({ ...note })
+    setTitle('Update note')
     setShowModal(true)
   }
 
@@ -41,6 +46,7 @@ const Home = () => {
   }
 
   const handleInput = (field: string, value: string) => {
+    filterByTitle(value)
     setValues((v) => ({ ...v, [field]: value }))
   }
 
@@ -48,7 +54,7 @@ const Home = () => {
     <S.Container>
       <S.Wrapper>
         <Modal
-          title={'Add note'}
+          title={title}
           isOpen={showModal}
           onClose={toggleModal}
           onAdd={onSubmit}
@@ -59,6 +65,7 @@ const Home = () => {
         <S.SearchWrapper>
           <TextInput
             name="search"
+            placeholder="Search notes..."
             value={values.search}
             isInputSearch
             icon={<Search />}
@@ -95,7 +102,14 @@ const Home = () => {
               />
             ))
           ) : (
-            <Empty title="You don't have any notes" image={emptyNoteImage} />
+            <Empty
+              title={
+                values.search
+                  ? "Couldn't find any notes"
+                  : "You don't have any notes"
+              }
+              image={values.search ? searchImage : emptyNoteImage}
+            />
           )}
         </S.Notes>
       </S.Wrapper>

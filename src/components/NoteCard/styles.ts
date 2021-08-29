@@ -38,6 +38,7 @@ export const Header = styled.div`
 export const Title = styled.h2`
   ${({ theme }) => css`
     flex: 1;
+    word-wrap: break-word;
     font-size: ${theme.font.sizes.large};
     font-weight: ${theme.font.medium};
     color: ${theme.colors.white};

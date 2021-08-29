@@ -15,11 +15,11 @@ export const Title = styled.h2`
 `
 
 type BarProps = {
-  width: number
+  progress: number
 }
 
 export const Bar = styled.h2<BarProps>`
-  ${({ theme, width }) => css`
+  ${({ theme, progress }) => css`
     margin-top: ${theme.spacings.xxsmall};
     height: 0.4rem;
     background-color: ${lighten(0.4, theme.colors.blue)};
@@ -32,7 +32,7 @@ export const Bar = styled.h2<BarProps>`
       height: 0.4rem;
       left: 0;
       top: 0;
-      width: ${`${width}%`};
+      width: ${`${progress}%`};
       background-color: ${theme.colors.blue};
     }
   `}

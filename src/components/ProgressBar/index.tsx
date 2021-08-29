@@ -10,7 +10,7 @@ const ProgressBar = () => {
   return (
     <S.Wrapper>
       <S.Title>{`You have ${completed}/${quantity} notes completed`}</S.Title>
-      <S.Bar width={(completed / quantity) * 100} />
+      <S.Bar progress={(completed / quantity) * 100} />
     </S.Wrapper>
   )
 }

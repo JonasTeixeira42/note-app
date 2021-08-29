@@ -12,6 +12,7 @@ export type NoteContextData = {
   quantity: number
   completed: number
   addNote: (note: NoteCardProps) => void
+  filterByTitle: (value: string) => void
   updateNote: (note: NoteCardProps) => void
   changeStatus: (id: string, status: boolean) => void
   removeNote: (id: string) => void
@@ -22,6 +23,7 @@ export const NoteContextDefaultValues = {
   quantity: 0,
   completed: 0,
   addNote: () => null,
+  filterByTitle: () => null,
   updateNote: () => null,
   changeStatus: () => null,
   removeNote: () => null
@@ -37,18 +39,33 @@ export type NoteProviderProps = {
 
 const NoteProvider = ({ children }: NoteProviderProps) => {
   const [noteCards, setNoteCards] = useState<NoteCardProps[]>([])
+  const [filteredNotes, setFilteredNotes] = useState<NoteCardProps[]>([])
 
   useEffect(() => {
     const data = getStorageItem(NOTE_KEY)
 
     if (data) {
       setNoteCards(data)
+      setFilteredNotes(data)
     }
   }, [])
 
   const saveNote = (noteItems: NoteCardProps[]) => {
     setNoteCards([...noteItems])
+    setFilteredNotes([...noteItems])
     setStorageItem(NOTE_KEY, noteItems)
+  }
+
+  const filterByTitle = (value: string) => {
+    if (value) {
+      const filter = noteCards.filter((note) =>
+        note.title?.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      )
+
+      setFilteredNotes([...filter])
+      return
+    }
+    setFilteredNotes([...noteCards])
   }
 
   const addNote = (note: NoteCardProps) => {
@@ -93,12 +110,13 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
   return (
     <NoteContext.Provider
       value={{
-        notes: noteCards,
+        notes: filteredNotes,
         quantity: noteCards.length,
         completed,
         addNote,
         removeNote,
         updateNote,
+        filterByTitle,
         changeStatus
       }}
     >

@@ -33,7 +33,7 @@ export const Actions = styled.div`
 export const Notes = styled.div`
   ${({ theme }) => css`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     column-gap: ${theme.spacings.xsmall};
     row-gap: ${theme.spacings.small};
   `}
