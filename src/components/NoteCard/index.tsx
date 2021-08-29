@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-//DEIXAT ICONES COM ARIA_LABEL PARA TESTES
 import React from 'react'
 import { Edit, Delete } from '@styled-icons/material/'
 
 import Checkbox from 'components/Checkbox'
 
 import * as S from './styles'
+import { useNote } from 'hooks/use_note'
 
 export type NoteTypes = 'home' | 'personal' | 'work'
 
@@ -26,17 +25,23 @@ const NoteCard = ({
   isFinished = false,
   type = 'home'
 }: NoteCardProps) => {
+  const { changeStatus } = useNote()
+
+  const onCheck = (isChecked: boolean) => {
+    changeStatus(id, isChecked)
+  }
+
   return (
     <S.Wrapper type={type} isFinished={isFinished}>
       <S.Header>
-        <Checkbox onCheck={() => {}} />
+        <Checkbox isChecked={isFinished} onCheck={(v) => onCheck(v)} />
         <S.Title>{title}</S.Title>
         <S.ActionGroup>
           <S.IconWrapper>
-            <Edit />
+            <Edit aria-label="edit note" />
           </S.IconWrapper>
           <S.IconWrapper>
-            <Delete />
+            <Delete aria-label="delete note" />
           </S.IconWrapper>
         </S.ActionGroup>
       </S.Header>

@@ -4,10 +4,11 @@ import * as S from './styles'
 
 export type CheckboxProps = {
   onCheck: (status: boolean) => void
+  isChecked?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Checkbox = ({ onCheck, ...props }: CheckboxProps) => {
-  const [checked, setChecked] = useState(false)
+const Checkbox = ({ onCheck, isChecked = false, ...props }: CheckboxProps) => {
+  const [checked, setChecked] = useState(isChecked)
 
   const onChange = () => {
     const status = !checked

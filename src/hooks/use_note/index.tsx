@@ -11,6 +11,7 @@ export type NoteContextData = {
   notes: NoteCardProps[]
   addNote: (note: NoteCardProps) => void
   updateNote: (note: NoteCardProps) => void
+  changeStatus: (id: string, status: boolean) => void
   removeNote: (id: string) => void
 }
 
@@ -18,6 +19,7 @@ export const NoteContextDefaultValues = {
   notes: [],
   addNote: () => null,
   updateNote: () => null,
+  changeStatus: () => null,
   removeNote: () => null
 }
 
@@ -41,7 +43,7 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
   }, [])
 
   const saveNote = (noteItems: NoteCardProps[]) => {
-    setNoteCards(noteItems)
+    setNoteCards([...noteItems])
     setStorageItem(NOTE_KEY, noteItems)
   }
 
@@ -56,6 +58,18 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
     saveNote(newNotes)
   }
 
+  const changeStatus = (id: string, status: boolean) => {
+    const newNotes = noteCards
+    const noteIndex = newNotes.findIndex((note) => note.id === id)
+
+    if (noteIndex < 0) {
+      return null
+    }
+    newNotes[noteIndex].isFinished = status
+
+    saveNote(newNotes)
+  }
+
   const updateNote = (note: NoteCardProps) => {
     console.log('UPDATE', note)
   }
@@ -66,7 +80,8 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
         notes: noteCards,
         addNote,
         removeNote,
-        updateNote
+        updateNote,
+        changeStatus
       }}
     >
       {children}
