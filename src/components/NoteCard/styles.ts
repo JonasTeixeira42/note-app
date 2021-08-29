@@ -23,6 +23,7 @@ export const Wrapper = styled.article<WrapperProps>`
     flex-direction: column;
     border-radius: ${theme.border.radius};
     padding: 2rem ${theme.spacings.xsmall};
+    box-shadow: 0px 3px 6px #00000029;
     background-color: ${!!type && theme.colors[colors[type]]};
 
     ${isFinished && wrapperModifiers.done(theme)};
