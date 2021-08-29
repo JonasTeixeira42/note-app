@@ -4,6 +4,7 @@ import { Add, Search } from '@styled-icons/material-outlined'
 import Modal from 'components/Modal'
 import Empty from 'components/Empty'
 import Button from 'components/Button'
+import Filters from 'components/Filters'
 import NoteCard from 'components/NoteCard'
 import TextInput from 'components/TextInput'
 import ProgressBar from 'components/ProgressBar'
@@ -12,10 +13,12 @@ import FormNote, { FormNoteProps } from 'components/FormNote'
 
 import { useNote } from 'hooks/use_note'
 import initialValue from './initalValue'
+import filters from 'components/Filters/initialValue'
 import emptyNoteImage from 'assets/images/add-note-illustration.svg'
 import searchImage from 'assets/images/search-image.svg'
 
 import * as S from './styles'
+import MediaMatch from 'components/MediaMatch'
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
@@ -72,7 +75,11 @@ const Home = () => {
             onInputChange={(v) => handleInput('search', v)}
           />
           <S.Actions>
-            <div></div>
+            <div>
+              <MediaMatch greaterThan="medium">
+                <Filters filters={filters} />
+              </MediaMatch>
+            </div>
             <Button
               onClick={toggleModal}
               color="white"
