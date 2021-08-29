@@ -26,6 +26,7 @@ export const Actions = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: ${theme.spacings.small} 0 ${theme.spacings.medium};
   `}
 `
