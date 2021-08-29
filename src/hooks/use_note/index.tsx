@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 
 import { NoteCardProps } from 'components/NoteCard'
 
+import formatDate from 'utils/format-date'
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
 
 const NOTE_KEY = 'noteCards'
@@ -45,6 +46,8 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
   }
 
   const addNote = (note: NoteCardProps) => {
+    note.date = formatDate(new Date())
+    note.isFinished = false
     saveNote([...noteCards, note])
   }
 

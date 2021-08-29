@@ -15,6 +15,7 @@ const Home = () => {
   const [values, setValues] = useState({ search: '' })
 
   const { notes } = useNote()
+
   const form = useRef<HTMLButtonElement>(null)
 
   const toggleModal = () => setShowModal(!showModal)

@@ -1,4 +1,5 @@
 import React, { useState, forwardRef } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import Select from 'components/Select'
 import Textarea from 'components/Textarea'
@@ -11,13 +12,14 @@ import { useNote } from 'hooks/use_note'
 import { FieldErrors, noteValidade } from 'utils/validations'
 
 export type FormNoteProps = {
+  id?: string
   title?: string
   category?: string
   description?: string
 }
 
 const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
-  ({ title = '', category = '', description = '' }, ref) => {
+  ({ title = '', category = '', description = '', id = '' }, ref) => {
     const [formErrors, setFormErrors] = useState<FieldErrors>({})
     const [values, setValues] = useState({
       title: title,
@@ -42,12 +44,10 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
       }
 
       const newNote = {
-        id: '1',
+        id: id || uuidv4(),
         title: values.title,
         type: values.category as NoteTypes,
-        description: values.description,
-        date: 'Jan 21',
-        isFinished: false
+        description: values.description
       }
 
       addNote(newNote)

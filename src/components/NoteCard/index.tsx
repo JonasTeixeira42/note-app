@@ -10,20 +10,20 @@ import * as S from './styles'
 export type NoteTypes = 'home' | 'personal' | 'work'
 
 export type NoteCardProps = {
-  id: string
-  title: string
-  description: string
-  date: string
-  isFinished: boolean
-  type: NoteTypes
+  id?: string
+  title?: string
+  description?: string
+  date?: string
+  isFinished?: boolean
+  type?: NoteTypes
 }
 
 const NoteCard = ({
   id = '',
-  title,
-  description,
-  date,
-  isFinished,
+  title = '',
+  description = '',
+  date = '',
+  isFinished = false,
   type = 'home'
 }: NoteCardProps) => {
   return (
