@@ -3,9 +3,11 @@ import React, { useState, forwardRef } from 'react'
 import Select from 'components/Select'
 import Textarea from 'components/Textarea'
 import TextInput from 'components/TextInput'
+import { NoteTypes } from 'components/NoteCard'
 
 import * as S from './styles'
 import options from './options'
+import { useNote } from 'hooks/use_note'
 import { FieldErrors, noteValidade } from 'utils/validations'
 
 export type FormNoteProps = {
@@ -23,6 +25,8 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
       description: description
     })
 
+    const { addNote } = useNote()
+
     const handleInput = (field: string, value: string) => {
       setValues((v) => ({ ...v, [field]: value }))
     }
@@ -37,7 +41,23 @@ const FormNote = forwardRef<HTMLButtonElement, FormNoteProps>(
         return
       }
 
+      const newNote = {
+        id: '1',
+        title: values.title,
+        type: values.category as NoteTypes,
+        description: values.description,
+        date: 'Jan 21',
+        isFinished: false
+      }
+
+      addNote(newNote)
+
       setFormErrors({})
+      setValues({
+        title: title,
+        category: category,
+        description: description
+      })
     }
 
     return (

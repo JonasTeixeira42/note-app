@@ -5,12 +5,15 @@ import Home from 'templates/Home'
 
 import theme from 'styles/theme'
 import GlobalStyles from 'styles/global'
+import { NoteProvider } from 'hooks/use_note'
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Home />
+      <NoteProvider>
+        <GlobalStyles />
+        <Home />
+      </NoteProvider>
     </ThemeProvider>
   )
 }

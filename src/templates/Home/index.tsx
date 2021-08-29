@@ -14,8 +14,8 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false)
   const [values, setValues] = useState({ search: '' })
 
-  const form = useRef<HTMLButtonElement>(null)
   const { notes } = useNote()
+  const form = useRef<HTMLButtonElement>(null)
 
   const toggleModal = () => setShowModal(!showModal)
 
@@ -62,6 +62,7 @@ const Home = () => {
             </Button>
           </S.Actions>
         </S.SearchWrapper>
+
         <S.Notes>
           {notes.map((note, key) => (
             <NoteCard
