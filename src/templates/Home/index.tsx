@@ -7,7 +7,7 @@ import NoteCard from 'components/NoteCard'
 import FormNote from 'components/FormNote'
 import TextInput from 'components/TextInput'
 
-import notes from './mock'
+import { useNote } from 'hooks/use_note'
 import * as S from './styles'
 
 const Home = () => {
@@ -15,6 +15,7 @@ const Home = () => {
   const [values, setValues] = useState({ search: '' })
 
   const form = useRef<HTMLButtonElement>(null)
+  const { notes } = useNote()
 
   const toggleModal = () => setShowModal(!showModal)
 
@@ -39,6 +40,7 @@ const Home = () => {
         >
           <FormNote ref={form} />
         </Modal>
+
         <S.SearchWrapper>
           <TextInput
             name="search"
@@ -64,6 +66,7 @@ const Home = () => {
           {notes.map((note, key) => (
             <NoteCard
               key={key}
+              id={note.id}
               type={note.type}
               date={note.date}
               title={note.title}

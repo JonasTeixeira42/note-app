@@ -10,6 +10,7 @@ import * as S from './styles'
 export type NoteTypes = 'home' | 'personal' | 'work'
 
 export type NoteCardProps = {
+  id: string
   title: string
   description: string
   date: string
@@ -18,6 +19,7 @@ export type NoteCardProps = {
 }
 
 const NoteCard = ({
+  id = '',
   title,
   description,
   date,
