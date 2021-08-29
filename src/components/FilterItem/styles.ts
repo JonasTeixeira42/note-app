@@ -9,18 +9,9 @@ const wrapperModifiers = {
     ${Label} {
       color: ${theme.colors.white};
     }
-  `
-}
+  `,
 
-export const Wrapper = styled.div<Omit<FilterItemProps, 'label'>>`
-  ${({ theme, background, active }) => css`
-    position: relative;
-    font-size: ${theme.font.sizes.small};
-    padding: ${theme.spacings.xxsmall} 2.6rem;
-    width: fit-content;
-    border-radius: 0.6rem;
-    background-color: transparent;
-
+  circle: (theme: DefaultTheme, background: Colors) => css`
     &::before {
       content: '';
       position: absolute;
@@ -32,12 +23,26 @@ export const Wrapper = styled.div<Omit<FilterItemProps, 'label'>>`
       transform: translateX(-50%);
       bottom: 0;
     }
+  `
+}
 
+export const Wrapper = styled.div<Omit<FilterItemProps, 'label'>>`
+  ${({ theme, background, active, hasCircle }) => css`
+    position: relative;
+    font-size: ${theme.font.sizes.small};
+    padding: ${theme.spacings.xxsmall} 2.6rem;
+    width: fit-content;
+    border-radius: 0.6rem;
+    background-color: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    ${hasCircle && wrapperModifiers.circle(theme, background)}
     ${active && wrapperModifiers.active(theme, background)}
   `}
 `
 export const Label = styled.span`
   ${({ theme }) => css`
-    color: ${theme.colors.black};
+    color: ${theme.colors.darkGray};
   `}
 `

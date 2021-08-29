@@ -8,15 +8,28 @@ export type FilterItemProps = {
   label: string
   background: Colors
   active?: boolean
+  hasCircle?: boolean
+  onClick?: (label: string) => void
 }
 
 const FilterItem = ({
   label = '',
   background = 'blue',
-  active = false
+  active = false,
+  hasCircle = true,
+  onClick
 }: FilterItemProps) => {
+  const handleClick = () => {
+    onClick && onClick(label)
+  }
+
   return (
-    <S.Wrapper background={background} active={active}>
+    <S.Wrapper
+      onClick={handleClick}
+      background={background}
+      active={active}
+      hasCircle={hasCircle}
+    >
       <S.Label>{label}</S.Label>
     </S.Wrapper>
   )
