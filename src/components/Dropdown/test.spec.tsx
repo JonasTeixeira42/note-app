@@ -7,7 +7,7 @@ import { renderWithTheme } from 'utils/tests/helpers'
 
 import Dropdown from '.'
 
-describe('<Checkbox />', () => {
+describe('<Dropdown />', () => {
   it('should render the Dropdown', () => {
     renderWithTheme(<Dropdown />)
 
