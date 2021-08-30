@@ -49,16 +49,6 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, disabled, error, isInputSearch }) => css`
-    border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
-
-    ${disabled && wrapperModifiers.disabled(theme)};
-    ${error && wrapperModifiers.error(theme)};
-    ${isInputSearch && wrapperModifiers.search(theme)}
-  `}
-`
-
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -105,5 +95,15 @@ export const Error = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     color: ${theme.colors.red};
+  `}
+`
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, disabled, error, isInputSearch }) => css`
+    border-radius: ${theme.border.radius} ${theme.border.radius} 0 0;
+
+    ${disabled && wrapperModifiers.disabled(theme)};
+    ${error && wrapperModifiers.error(theme)};
+    ${isInputSearch && wrapperModifiers.search(theme)}
   `}
 `

@@ -6,7 +6,7 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import FormNote from '.'
 
 describe('<FormNote />', () => {
-  it('should render the Empty FormNote', () => {
+  it('should render the FormNote', () => {
     renderWithTheme(<FormNote />)
 
     expect(screen.getByPlaceholderText(/Add tittle.../i)).toBeInTheDocument()

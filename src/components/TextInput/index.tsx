@@ -3,7 +3,7 @@ import React, { InputHTMLAttributes } from 'react'
 import * as S from './styles'
 
 export type TextInputProps = {
-  onInputChange: (value: string) => void
+  onInputChange?: (value: string) => void
   value?: string
   icon?: React.ReactNode
   disabled?: boolean
@@ -23,7 +23,7 @@ const TextInput = ({
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value
 
-    onInputChange(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
 
   return (
