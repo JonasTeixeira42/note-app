@@ -1,7 +1,8 @@
 import React from 'react'
-import { Edit, Delete } from '@styled-icons/material/'
+import { Edit } from '@styled-icons/material/'
 
 import Checkbox from 'components/Checkbox'
+import NotecardDropdown from 'components/NotecardDropdown'
 import { FormNoteProps } from 'components/FormNote'
 
 import * as S from './styles'
@@ -28,7 +29,7 @@ const NoteCard = ({
   type = 'home',
   onUpdate
 }: NoteCardProps) => {
-  const { changeStatus, removeNote } = useNote()
+  const { changeStatus } = useNote()
 
   const onCheck = (isChecked: boolean) => {
     changeStatus(id, isChecked)
@@ -37,10 +38,6 @@ const NoteCard = ({
   const onClick = () => {
     !!onUpdate &&
       onUpdate({ id, title, description, category: type as NoteTypes })
-  }
-
-  const onDelete = () => {
-    removeNote(id)
   }
 
   return (
@@ -52,8 +49,8 @@ const NoteCard = ({
           <S.IconWrapper onClick={onClick}>
             <Edit aria-label="edit note" />
           </S.IconWrapper>
-          <S.IconWrapper onClick={onDelete}>
-            <Delete aria-label="delete note" />
+          <S.IconWrapper>
+            <NotecardDropdown id={id} />
           </S.IconWrapper>
         </S.ActionGroup>
       </S.Header>

@@ -20,7 +20,7 @@ export const Wrapper = styled.div<WrapperProps>`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: ${theme.layers.modal};
+    z-index: ${theme.layers.alwaysOnTop};
     background-color: rgba(0, 0, 0, 0.4);
     transition: all 0.2s ease-in-out;
     display: flex;
