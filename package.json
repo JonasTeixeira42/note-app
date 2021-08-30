@@ -42,6 +42,12 @@
       "pre-commit": "lint-staged"
     }
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts(x)?",
+      "!src/**/stories.tsx"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
