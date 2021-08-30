@@ -2,7 +2,8 @@ import React from 'react'
 import { Edit } from '@styled-icons/material/'
 
 import Checkbox from 'components/Checkbox'
-import NotecardDropdown from 'components/NotecardDropdown'
+import Dropdown from 'components/Dropdown'
+
 import { FormNoteProps } from 'components/FormNote'
 
 import * as S from './styles'
@@ -50,7 +51,7 @@ const NoteCard = ({
             <Edit aria-label="edit note" />
           </S.IconWrapper>
           <S.IconWrapper>
-            <NotecardDropdown id={id} />
+            <Dropdown id={id} />
           </S.IconWrapper>
         </S.ActionGroup>
       </S.Header>

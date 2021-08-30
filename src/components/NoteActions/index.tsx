@@ -3,28 +3,33 @@ import React from 'react'
 import Button from 'components/Button'
 
 import * as S from './styles'
-import { useNote } from 'hooks/use_note'
 
 export type NoteActionsProps = {
   id?: string
+  onDelete?: () => void
+  onClose?: () => void
 }
 
-const NoteActions = ({ id = '' }: NoteActionsProps) => {
-  const { removeNote } = useNote()
-
-  const onDelete = () => {
-    removeNote(id)
-  }
-
+const NoteActions = ({ onClose, onDelete }: NoteActionsProps) => {
   return (
     <S.Wrapper>
-      <p>Delete Note?</p>
-
-      <S.ActionWrapper>
-        <Button onClick={onDelete} background="white" color="blue">
-          Delete
+      <p>Delete note?</p>
+      <S.Action>
+        <Button
+          onClick={() => onClose && onClose()}
+          background="white"
+          color="blue"
+        >
+          cancel
         </Button>
-      </S.ActionWrapper>
+        <Button
+          onClick={() => onDelete && onDelete()}
+          background="white"
+          color="blue"
+        >
+          delete
+        </Button>
+      </S.Action>
     </S.Wrapper>
   )
 }

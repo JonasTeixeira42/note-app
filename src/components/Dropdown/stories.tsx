@@ -19,8 +19,3 @@ export const Default: Story<DropdownProps> = (args) => (
     <Dropdown {...args} />
   </div>
 )
-
-Default.args = {
-  title: 'Click here',
-  children: 'content'
-}

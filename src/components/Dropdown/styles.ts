@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const Title = styled.div`
+export const Icon = styled.div`
   ${({ theme }) => css`
     cursor: pointer;
     color: ${theme.colors.white};
@@ -8,7 +8,12 @@ export const Title = styled.div`
     display: flex;
     align-items: center;
     padding-right: 2.4rem;
-    z-index: ${theme.layers.modal};
+    z-index: ${theme.layers.overlay};
+
+    > svg {
+      width: 2.4rem;
+      color: red;
+    }
   `}
 `
 

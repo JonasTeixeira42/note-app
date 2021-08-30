@@ -1,20 +1,33 @@
 import React, { useState } from 'react'
+import { Delete } from '@styled-icons/material/'
+
+import NoteActions from 'components/NoteActions'
 
 import * as S from './styles'
+import { useNote } from 'hooks/use_note'
 
 export type DropdownProps = {
-  title: React.ReactNode
-  children: React.ReactNode
+  id?: string
 }
 
-const Dropdown = ({ title, children }: DropdownProps) => {
+const Dropdown = ({ id = '' }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { removeNote } = useNote()
+
+  const onDelete = () => {
+    removeNote(id)
+    setIsOpen(!isOpen)
+  }
 
   return (
     <S.Wrapper isOpen={isOpen}>
-      <S.Title onClick={() => setIsOpen(!isOpen)}>{title}</S.Title>
+      <S.Icon onClick={() => setIsOpen(!isOpen)}>
+        <Delete />
+      </S.Icon>
 
-      <S.Content aria-hidden={!isOpen}>{children}</S.Content>
+      <S.Content aria-hidden={!isOpen}>
+        <NoteActions onDelete={onDelete} onClose={() => setIsOpen(!isOpen)} />
+      </S.Content>
       <S.Overlay aria-hidden={!isOpen} onClick={() => setIsOpen(!isOpen)} />
     </S.Wrapper>
   )
