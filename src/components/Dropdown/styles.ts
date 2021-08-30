@@ -12,7 +12,7 @@ export const Icon = styled.div`
 
     > svg {
       width: 2.4rem;
-      color: red;
+      color: rgba(255, 255, 255, 0.6);
     }
   `}
 `
