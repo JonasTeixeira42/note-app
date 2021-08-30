@@ -16,6 +16,7 @@ export type NoteContextData = {
   updateNote: (note: NoteCardProps) => void
   changeStatus: (id: string, status: boolean) => void
   removeNote: (id: string) => void
+  filterByCategory: (category: string) => void
 }
 
 export const NoteContextDefaultValues = {
@@ -26,7 +27,8 @@ export const NoteContextDefaultValues = {
   filterByTitle: () => null,
   updateNote: () => null,
   changeStatus: () => null,
-  removeNote: () => null
+  removeNote: () => null,
+  filterByCategory: () => null
 }
 
 export const NoteContext = createContext<NoteContextData>(
@@ -54,6 +56,20 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
     setNoteCards([...noteItems])
     setFilteredNotes([...noteItems])
     setStorageItem(NOTE_KEY, noteItems)
+  }
+
+  const filterByCategory = (category: string) => {
+    const formattedCategory = category.toLowerCase()
+
+    if (!(formattedCategory === 'all')) {
+      const filteredNotes = noteCards.filter(
+        (note) => note.type === formattedCategory
+      )
+
+      setFilteredNotes([...filteredNotes])
+      return
+    }
+    setFilteredNotes([...noteCards])
   }
 
   const filterByTitle = (value: string) => {
@@ -117,7 +133,8 @@ const NoteProvider = ({ children }: NoteProviderProps) => {
         removeNote,
         updateNote,
         filterByTitle,
-        changeStatus
+        changeStatus,
+        filterByCategory
       }}
     >
       {children}

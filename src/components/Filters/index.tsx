@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import FilterItem, { FilterItemProps } from 'components/FilterItem'
 
 import * as S from './styles'
+import { useNote } from 'hooks/use_note'
 
 export type FiltersProps = {
   filters: FilterItemProps[]
@@ -10,6 +11,8 @@ export type FiltersProps = {
 
 const Filters = ({ filters }: FiltersProps) => {
   const [filter, setFilter] = useState<FilterItemProps[]>(filters)
+
+  const { filterByCategory } = useNote()
 
   const toggleActive = (label: string) => {
     const data = [...filter]
@@ -19,6 +22,7 @@ const Filters = ({ filters }: FiltersProps) => {
     })
 
     setFilter(data)
+    filterByCategory(label)
   }
 
   return (
