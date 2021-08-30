@@ -3,7 +3,7 @@ import React, { InputHTMLAttributes, useState } from 'react'
 import * as S from './styles'
 
 export type CheckboxProps = {
-  onCheck: (status: boolean) => void
+  onCheck?: (status: boolean) => void
   isChecked?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
