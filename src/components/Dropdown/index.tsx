@@ -22,7 +22,7 @@ const Dropdown = ({ id = '' }: DropdownProps) => {
   return (
     <S.Wrapper isOpen={isOpen}>
       <S.Icon onClick={() => setIsOpen(!isOpen)}>
-        <Delete />
+        <Delete aria-label="delete note" />
       </S.Icon>
 
       <S.Content aria-hidden={!isOpen}>
