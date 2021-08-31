@@ -3,21 +3,21 @@ import React, { TextareaHTMLAttributes } from 'react'
 import * as S from './styles'
 
 export type TextareaProps = {
-  onInputChange: (value: string) => void
-  value: string
+  onInputChange?: (value: string) => void
+  value?: string
   error?: string
 } & TextareaHTMLAttributes<HTMLTextAreaElement>
 
 const Textarea = ({
   onInputChange,
-  value,
+  value = '',
   error = '',
   ...props
 }: TextareaProps) => {
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value
 
-    onInputChange(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
 
   return (
