@@ -8,8 +8,8 @@ type SelectOption = {
 }
 
 export type SelectProps = {
-  onInputChange: (value: string) => void
-  value: string
+  onInputChange?: (value: string) => void
+  value?: string
   error?: string
   placeholder?: string
   options: SelectOption[]
@@ -17,7 +17,7 @@ export type SelectProps = {
 
 const Select = ({
   onInputChange,
-  value,
+  value = '',
   error = '',
   placeholder = '',
   options = [],
@@ -26,7 +26,7 @@ const Select = ({
   const onChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = event.target.value
 
-    onInputChange(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
 
   return (
