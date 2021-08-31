@@ -17,19 +17,6 @@ const wrapperModifiers = {
   `
 }
 
-export const Wrapper = styled.article<WrapperProps>`
-  ${({ theme, type, isFinished }) => css`
-    display: flex;
-    flex-direction: column;
-    border-radius: ${theme.border.radius};
-    padding: 2rem ${theme.spacings.xsmall};
-    box-shadow: 0px 3px 6px #00000029;
-    background-color: ${!!type && theme.colors[colors[type]]};
-
-    ${isFinished && wrapperModifiers.done(theme)};
-  `}
-`
-
 export const Header = styled.div`
   display: flex;
   align-items: center;
@@ -77,5 +64,18 @@ export const Date = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     color: ${theme.colors.white};
+  `}
+`
+
+export const Wrapper = styled.article<WrapperProps>`
+  ${({ theme, type, isFinished }) => css`
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.border.radius};
+    padding: 2rem ${theme.spacings.xsmall};
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: ${!!type && theme.colors[colors[type]]};
+
+    ${isFinished && wrapperModifiers.done(theme)};
   `}
 `
