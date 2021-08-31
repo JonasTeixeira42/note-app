@@ -36,4 +36,4 @@ Abrir [http://localhost:3000](http://localhost:3000) no seu navegador para ver o
 - `test:watch`: roda o jest em watch mode
 - `storybook`: roda o storybook em `localhost:6006`
 - `build-storybook`: cria a versão de build do storybook
-- `generate`: gera um componente com todos os arquivos iniciais, como de teste, estilo, storybook
+- `generate`: gera um componente com todos os arquivos iniciais, como de teste, estilo, storybook 
